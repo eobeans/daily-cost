@@ -74,7 +74,7 @@
 import { reactive, toRefs, ref, onMounted } from 'vue'
 import VueImgVerify from '../components/VueImageVerify.vue'
 import Header from '../components/Header.vue'
-import axios from '../utils/axios'
+// import axios from '../utils/axios'
 import { Toast } from 'vant'
 import router from '../router'
 export default {
@@ -95,36 +95,40 @@ export default {
     })
 
     // 提交登录 or 注册表单
-    const onSubmit = async (values) => {
-      try {
-        if (state.type == 'login') {
-          const { data } = await axios.post('/user/login', {
-            username: state.username,
-            password: state.password
-          })
-          localStorage.setItem('token', data.token)
-          window.location.href = '/'
-        } else {
-          state.imgCode = verifyRef.value.imgCode || ''
-          if (verifyRef.value.imgCode.toLowerCase() != state.verify.toLowerCase()) {
-            console.log('verifyRef.value.imgCode', verifyRef.value.imgCode)
-            Toast.fail('验证码错误')
-            return
-          }
-          state.loading = true
-          const { data } = await axios.post('/user/register', {
-            username: state.username,
-            password: state.password
-          })
-          Toast.success('注册成功')
-          state.type = 'login'
-          state.loading = false
-        }
-      } catch (error) {
-        console.log(111)
-        state.loading = false
-      }
+    const onSubmit = (value) => {
+      localStorage.setItem('token', '123')
+      window.location.href = '/'
     }
+
+    // const onSubmit = async (values) => {
+    //   try {
+    //     if (state.type == 'login') {
+    //       const { data } = await axios.post('/user/login', {
+    //         username: state.username,
+    //         password: state.password
+    //       })
+    //       localStorage.setItem('token', data.token)
+    //       window.location.href = '/'
+    //     } else {
+    //       state.imgCode = verifyRef.value.imgCode || ''
+    //       if (verifyRef.value.imgCode.toLowerCase() != state.verify.toLowerCase()) {
+    //         console.log('verifyRef.value.imgCode', verifyRef.value.imgCode)
+    //         Toast.fail('验证码错误')
+    //         return
+    //       }
+    //       state.loading = true
+    //       const { data } = await axios.post('/user/register', {
+    //         username: state.username,
+    //         password: state.password
+    //       })
+    //       Toast.success('注册成功')
+    //       state.type = 'login'
+    //       state.loading = false
+    //     }
+    //   } catch (error) {
+    //     state.loading = false
+    //   }
+    // }
 
     // 切换登录和注册两种模式
     const chanegType = (type) => {

@@ -58,7 +58,7 @@ import { ref, onMounted, reactive, toRefs, onUnmounted } from 'vue'
 // import { init } from 'echarts'
 import dayjs from 'dayjs'
 import PopMonth from '../components/PopMonth.vue'
-import axios from '../utils/axios'
+// import axios from '../utils/axios'
 import { typeMap } from '../utils'
 
 let proportionChart = null
@@ -90,16 +90,16 @@ export default {
     })
 
     const getData = async () => {
-      const { data } = await axios.get(`/bill/data?date=${state.currentMonth}`)
+      // const { data } = await axios.get(`/bill/data?date=${state.currentMonth}`)
 
-      // 总收支
-      state.total_expense = data.total_expense
-      state.total_income = data.total_income
+      // // 总收支
+      // state.total_expense = data.total_expense
+      // state.total_income = data.total_income
 
-      // 过滤支出和收入
-      state.expense_data = data.total_data.filter(item => item.pay_type == 1).sort((a, b) => b.number - a.number) // 过滤出账单类型为支出的项
-      state.income_data = data.total_data.filter(item => item.pay_type == 2).sort((a, b) => b.number - a.number) // 过滤出账单类型为收入的项
-      setPieChart()
+      // // 过滤支出和收入
+      // state.expense_data = data.total_data.filter(item => item.pay_type == 1).sort((a, b) => b.number - a.number) // 过滤出账单类型为支出的项
+      // state.income_data = data.total_data.filter(item => item.pay_type == 2).sort((a, b) => b.number - a.number) // 过滤出账单类型为收入的项
+      // setPieChart()
     }
 
     // 切换收支构成类型

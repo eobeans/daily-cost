@@ -33,7 +33,7 @@ import { reactive, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 import { Toast } from 'vant'
 import Header from '../components/Header.vue'
-import axios from '../utils/axios'
+// import axios from '../utils/axios'
 
 export default {
   name: 'Account',
@@ -55,11 +55,11 @@ export default {
         Toast.fail('新密码不一致')
         return
       }
-      const { data } = axios.post('/user/modify_pass', {
-        old_pass: state.oldPass,
-        new_pass: state.newPass,
-        new_pass2: state.newPass2
-      })
+      // const { data } = axios.post('/user/modify_pass', {
+      //   old_pass: state.oldPass,
+      //   new_pass: state.newPass,
+      //   new_pass2: state.newPass2
+      // })
 
       Toast.success('修改成功')
     }

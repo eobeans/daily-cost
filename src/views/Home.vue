@@ -38,7 +38,7 @@ import CardItem from '../components/CardItem.vue'
 import PopType from '../components/PopType.vue'
 import PopMonth from '../components/PopMonth.vue'
 import PopAdd from '../components/PopAdd.vue'
-import axios from '../utils/axios'
+// import axios from '../utils/axios'
 import dayjs from 'dayjs'
 export default {
   components: {
@@ -65,7 +65,24 @@ export default {
     })
 
     const getBillList = async () => {
-      const { data } = await axios.get(`/bill/list?date=${state.currentTime}&type_id=${state.currentSelect.id || 'all'}&page=${state.page}&page_size=5`)
+      const data = {
+        list: [
+          {
+            bills: [
+              {pay_typeL: 1,
+              amount:1213}
+            ]
+          },{
+            bills: [
+              {pay_typeL: 1,
+              amount:1213}
+            ]
+          },
+        ],
+        totalExpense: 1213.1213,
+        totalIncome: 1231,
+        totalPage: 1
+      }
       if (state.refreshing) {
         state.list = []
         state.refreshing = false
@@ -86,15 +103,6 @@ export default {
     }
 
     const onRefresh = () => {
-      // 清空列表数据
-      state.finished = false;
-      // 页数重制
-      state.page = 1
-      // 重新加载数据
-      // 将 loading 设置为 true，表示处于加载状态
-      state.refreshing = true
-      state.loading = true;
-      onLoad()
     }
     // 类型弹窗开关
     const toggle = () => {

@@ -32,7 +32,7 @@
 
 <script>
 import { onMounted, reactive, toRefs } from 'vue'
-import axios from '../utils/axios'
+// import axios from '../utils/axios'
 export default {
   name: 'User',
   setup() {
@@ -50,18 +50,18 @@ export default {
 
     // 获取用户信息
     const getUserInfo = async () => {
-      const { data } = await axios.get('/user/get_userinfo')
-      state.user = data
-      state.signature = data.signature
+      // const { data } = await axios.get('/user/get_userinfo')
+      // state.user = data
+      // state.signature = data.signature
     }
 
     // 个性签名弹窗确认
     const confirmSig = async () => {
-      const { data } = await axios.post('/user/edit_signature', {
-        signature: state.signature
-      })
-      state.user = data
-      state.signature = data.signature
+      // const { data } = await axios.post('/user/edit_signature', {
+      //   signature: state.signature
+      // })
+      // state.user = data
+      // state.signature = data.signature
     } 
 
     return {

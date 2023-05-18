@@ -75,7 +75,7 @@
 import { reactive, toRefs, onMounted, ref } from 'vue'
 import dayjs from 'dayjs'
 import { typeMap } from '../utils'
-import axios from '../utils/axios'
+// import axios from '../utils/axios'
 import { Toast } from 'vant'
 export default {
   props: {
@@ -105,13 +105,14 @@ export default {
     })
 
     onMounted(async () => {
-      const { data: { list } } = await axios.get('/type/list')
-      state.expense = list.filter(i => i.type == 1)
-      state.income = list.filter(i => i.type == 2)
-      // 没有 id 的情况下，说明是新建账单。
-      if (!id) {
-        state.currentType = state.expense[0] 
-      }
+      // const { data: { list } } = await axios.get('/type/list')
+      // state.expense = list.filter(i => i.type == 1)
+      // state.income = list.filter(i => i.type == 2)
+      // // 没有 id 的情况下，说明是新建账单。
+      // if (!id) {
+      //   state.currentType = state.expense[0] 
+      // }
+      state.currentType = state.expense[0] 
     })
 
     const toggle = () => {
@@ -163,22 +164,22 @@ export default {
         remark: state.remark || ''
       }
       if (id) {
-        params.id = id
+        // params.id = id
         // 如果有 id 需要调用详情更新接口
-        const result = await axios.post('/bill/update', params)
-        state.show = false
-        Toast.success('修改成功')
-        ctx.emit('refresh')
+        // const result = await axios.post('/bill/update', params)
+        // state.show = false
+        // Toast.success('修改成功')
+        // ctx.emit('refresh')
       } else {
-        const result = await axios.post('/bill/add', params)
-        state.amount = ''
-        state.payType = 'expense'
-        state.currentType = state.expense[0]
-        state.show = false
-        state.date = new Date()
-        state.remark = ''
-        Toast.success('添加成功')
-        ctx.emit('refresh')
+        // const result = await axios.post('/bill/add', params)
+        // state.amount = ''
+        // state.payType = 'expense'
+        // state.currentType = state.expense[0]
+        // state.show = false
+        // state.date = new Date()
+        // state.remark = ''
+        // Toast.success('添加成功')
+        // ctx.emit('refresh')
       }
     }
 

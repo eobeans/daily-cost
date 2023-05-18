@@ -58,8 +58,8 @@ export default {
     })
     // 获取账单详情方法
     const getDetail = async () => {
-      const { data } = await axios.get(`/bill/detail?id=${id}`)
-      state.detail = data
+      // const { data } = await axios.get(`/bill/detail?id=${id}`)
+      // state.detail = data
     }
     // 打开编辑弹窗方法
     const openModal = () => {
@@ -68,14 +68,14 @@ export default {
 
     // 删除方法
     const deleteDetail = () => {
-      Dialog.confirm({
-        title: '删除',
-        message: '确认删除账单？',
-      }).then(async () => {
-        const { data } = await axios.post('/bill/delete', { id })
-        Toast.success('删除成功')
-        router.back()
-      }).catch(() => {})
+      // Dialog.confirm({
+      //   title: '删除',
+      //   message: '确认删除账单？',
+      // }).then(async () => {
+      //   const { data } = await axios.post('/bill/delete', { id })
+      //   Toast.success('删除成功')
+      //   router.back()
+      // }).catch(() => {})
     }
 
     return {
